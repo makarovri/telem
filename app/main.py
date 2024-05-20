@@ -1,11 +1,16 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-import os
+# import os
 
-CLICK_HOUSE_HOST = os.environ.get('CLICK_HOUSE_HOST')
-CLICK_HOUSE_USER = os.environ.get('CLICK_HOUSE_USER')
-CLICK_HOUSE_PASSWORD = os.environ.get('CLICK_HOUSE_PASSWORD')
-CLICK_HOUSE_DB = os.environ.get('CLICK_HOUSE_DB')
+# CLICK_HOUSE_HOST = os.environ.get('CLICK_HOUSE_HOST')
+# CLICK_HOUSE_USER = os.environ.get('CLICK_HOUSE_USER')
+# CLICK_HOUSE_PASSWORD = os.environ.get('CLICK_HOUSE_PASSWORD')
+# CLICK_HOUSE_DB = os.environ.get('CLICK_HOUSE_DB')
+
+CLICK_HOUSE_HOST = '172.19.0.2'
+CLICK_HOUSE_USER = 'default'
+CLICK_HOUSE_PASSWORD = ''
+CLICK_HOUSE_DB = 'default'
 
 from clickhouse_driver import Client
 
