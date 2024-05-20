@@ -1,2 +1,3 @@
 fastapi
 uvicorn
+clickhouse_driver
