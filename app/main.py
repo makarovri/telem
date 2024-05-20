@@ -3,10 +3,6 @@ from pydantic import BaseModel
 
 from clickhouse_driver import Client
 
-CLICK_HOUSE_HOST = '188.225.27.153'
-CLICK_HOUSE_USER = 'default'
-CLICK_HOUSE_PASSWORD = ''
-CLICK_HOUSE_DB = 'default'
 
 client = Client(CLICK_HOUSE_HOST,
                 user=CLICK_HOUSE_USER,
