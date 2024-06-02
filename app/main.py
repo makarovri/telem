@@ -7,7 +7,7 @@ from pydantic import BaseModel
 # CLICK_HOUSE_PASSWORD = os.environ.get('CLICK_HOUSE_PASSWORD')
 # CLICK_HOUSE_DB = os.environ.get('CLICK_HOUSE_DB')
 
-CLICK_HOUSE_HOST = '172.19.0.2'
+CLICK_HOUSE_HOST = 'clickhouse'
 CLICK_HOUSE_USER = 'default'
 CLICK_HOUSE_PASSWORD = ''
 CLICK_HOUSE_DB = 'default'
