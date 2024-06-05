@@ -1,24 +1,17 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-# import os
-
-# CLICK_HOUSE_HOST = os.environ.get('CLICK_HOUSE_HOST')
-# CLICK_HOUSE_USER = os.environ.get('CLICK_HOUSE_USER')
-# CLICK_HOUSE_PASSWORD = os.environ.get('CLICK_HOUSE_PASSWORD')
-# CLICK_HOUSE_DB = os.environ.get('CLICK_HOUSE_DB')
-
-CLICK_HOUSE_HOST = 'clickhouse'
-CLICK_HOUSE_USER = 'default'
-CLICK_HOUSE_PASSWORD = ''
-CLICK_HOUSE_DB = 'default'
-
 from clickhouse_driver import Client
+import os
 
+CLICK_HOUSE_HOST = os.environ.get('CLICK_HOUSE_HOST')
+CLICK_HOUSE_USER = os.environ.get('CLICK_HOUSE_USER')
+CLICK_HOUSE_PASSWORD = os.environ.get('CLICK_HOUSE_PASSWORD')
+CLICK_HOUSE_DB = os.environ.get('CLICK_HOUSE_DB')
 
 client = Client(CLICK_HOUSE_HOST,
                 user=CLICK_HOUSE_USER,
                 password=CLICK_HOUSE_PASSWORD,
-                database=CLICK_HOUSE_DB) # коннект к ClickHouse
+                database=CLICK_HOUSE_DB) # подключение к ClickHouse
 
 app = FastAPI()
 
@@ -41,7 +34,7 @@ def parse_data(data):
 
 
 @app.post("/")
-async def demo_basic_auth_username(item: Item):
+async def insert_data(item: Item):
     try:
         # SQL-запрос для вставки данных
         cnt = client.execute("INSERT INTO raw_data (*) VALUES",
