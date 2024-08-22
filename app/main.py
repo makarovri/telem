@@ -7,6 +7,6 @@ app = FastAPI()
 async def insert_data(item):
     try:
         print(item)
-
+        return {"item": item}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error inserting item: {e}")
