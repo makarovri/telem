@@ -11,11 +11,11 @@ app = FastAPI()
 
 
 @app.post("/")
-async def root(request: list):
+async def root(request: Request):
     try:
         # print(body)
-
-        json_data = json.loads(request)
+        data = await request.json()
+        json_data = json.loads(data)
 
         for i in json_data:
             # SQL-запрос для вставки данных
