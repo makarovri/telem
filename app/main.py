@@ -14,10 +14,11 @@ app = FastAPI()
 @app.post("/")
 async def root(request: Request):
     try:
-        # print(body)
+        print("request", request)
         data = await request.json()
         json_data = json.loads(data)
-
+        print("json_data", json_data)
+        
         for i in json_data:
             # SQL-запрос для вставки данных
             cnt = client.execute(f"INSERT INTO flespi_daata {tuple(i.keys())} VALUES", i.values())
