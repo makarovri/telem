@@ -17,7 +17,7 @@ async def root(request: Request):
         data = await request.json()
         print("data", data)
         json_data = json.loads(data)
-        print("json_data", json_data)
+        print("json_data", str(json_data))
         
         for i in json_data:
             # SQL-запрос для вставки данных
