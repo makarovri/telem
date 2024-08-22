@@ -5,10 +5,9 @@ app = FastAPI()
 
 
 @app.post("/")
-async def root(request: Request):
+async def root(request: list):
     try:
-        body = await request.body()
         print(body.decode())
-        return JSONResponse(content={"request_body": body.decode()})
+        return JSONResponse(content={"request_body": body})
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error inserting item: {e}")
