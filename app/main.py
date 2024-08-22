@@ -2,10 +2,10 @@ from fastapi import FastAPI, HTTPException, Request
 from clickhouse_driver import Client
 from fastapi.responses import JSONResponse
 
-client = Client('clickhouse',
-                user='default',
-                password='',
-                database='arnavi') # подключение к ClickHouse
+client = Client("clickhouse",
+                user="default",
+                password="",
+                database="arnavi") # подключение к ClickHouse
 
 app = FastAPI()
 
@@ -15,7 +15,7 @@ async def root(request: list):
     try:
         # print(body)
 
-        json_data = json.loads(body)
+        json_data = json.loads(request)
 
         for i in json_data:
             # SQL-запрос для вставки данных
@@ -24,4 +24,3 @@ async def root(request: list):
         return JSONResponse(content={"request_body": body})
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error inserting item: {e}")
-        
