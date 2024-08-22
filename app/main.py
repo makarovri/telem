@@ -18,7 +18,7 @@ async def handler(request: Request):
 
         data_to_insert = []
         for i in json_data:
-            data_to_insert.append(i.values())
+            data_to_insert.append(list(i.values()))
         
         # print(data_to_insert)
         cnt = client.execute(f"INSERT INTO flespi_data (*) VALUES", data_to_insert)
