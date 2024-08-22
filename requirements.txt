@@ -2,3 +2,4 @@ fastapi
 uvicorn
 clickhouse_driver
 python-dotenv
+python-multipart
