@@ -106,7 +106,7 @@ async def handler(request: Request):
                     msg_array.append(None)
             data_to_insert.append(msg_array)
         
-        print(data_to_insert)
+        # print(data_to_insert)
         cnt = client.execute(f"INSERT INTO flespi_data (*) VALUES", data_to_insert, types_check=True)
 
         return {"data_to_insert":"OK"}
