@@ -1,48 +1,18 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-#from clickhouse_driver import Client
-#import os
-
-#CLICK_HOUSE_HOST = os.environ.get('CLICK_HOUSE_HOST')
-#CLICK_HOUSE_USER = os.environ.get('CLICK_HOUSE_USER')
-#CLICK_HOUSE_PASSWORD = os.environ.get('CLICK_HOUSE_PASSWORD')
-#CLICK_HOUSE_DB = os.environ.get('CLICK_HOUSE_DB')
-
-#client = Client(CLICK_HOUSE_HOST,
-#                user=CLICK_HOUSE_USER,
-#                password=CLICK_HOUSE_PASSWORD,
-#                database=CLICK_HOUSE_DB) # подключение к ClickHouse
 
 app = FastAPI()
-
 
 class Item(BaseModel):
     data: str
 
-
-def parse_data(data):
-    data_types = [int, str, str, float, float, float, float, float, int, int, str, int, str, str]
-
-    all_data = []
-
-    for line in data.splitlines():
-        data_parts = line.split(',')
-        converted_data = [data_type(data_part) for data_type, data_part in zip(data_types, data_parts)]
-        all_data.append(converted_data)
-
-    return all_data
-
-
 @app.post("/")
 async def insert_data(item: Item):
     try:
-         print(item.data)
-        # SQL-запрос для вставки данных
-#        cnt = client.execute("INSERT INTO raw_data (*) VALUES",
-#                       parse_data(item.data))
+        print(item.data)
+        
         return {
-            "message": "Item added successfully",
-#            "count": cnt
+            "message": "Item added successfully"
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error inserting item: {e}")
