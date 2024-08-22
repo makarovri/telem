@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException, Request
 from clickhouse_driver import Client
 from fastapi.responses import JSONResponse
+import json
 
 client = Client("clickhouse",
                 user="default",
