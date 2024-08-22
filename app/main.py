@@ -1,6 +1,5 @@
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, Request, HTTPException
 from clickhouse_driver import Client
-from fastapi.responses import JSONResponse
 import json
 
 client = Client("clickhouse",
@@ -10,19 +9,20 @@ client = Client("clickhouse",
 
 app = FastAPI()
 
-
 @app.post("/")
-async def root(request: Request):
+async def handler(request: Request):
     try:
-        data = await request.json()
-        # print("data", data)
-        json_data = json.loads(str(data))
-        # print("json_data", str(json_data))
-        
+        json_bytes = await request.body()
+
+        json_data = json.loads(json_bytes)
+
+        data_to_insert = []
         for i in json_data:
-            # SQL-запрос для вставки данных
-            cnt = client.execute(f"INSERT INTO flespi_daata {tuple(i.keys())} VALUES", i.values())
+            data_to_insert.append(i.values())
         
-        return JSONResponse(content={"request_body": body})
+        # print(data_to_insert)
+        cnt = client.execute(f"INSERT INTO flespi_data (*) VALUES", data_to_insert)
+
+        return {"data_to_insert":"OK"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error inserting item: {e}")
