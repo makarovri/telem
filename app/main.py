@@ -10,9 +10,7 @@ class Item(BaseModel):
 async def insert_data(item: Item):
     try:
         print(item.data)
+        return JSONResponse({'message': '"Item added successfully'})
         
-        return {
-            "message": "Item added successfully"
-        }
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error inserting item: {e}")
