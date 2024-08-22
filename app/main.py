@@ -14,8 +14,8 @@ app = FastAPI()
 @app.post("/")
 async def root(request: Request):
     try:
-        print("request", request)
         data = await request.json()
+        print("data", data)
         json_data = json.loads(data)
         print("json_data", json_data)
         
