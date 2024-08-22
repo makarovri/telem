@@ -6,6 +6,6 @@ services:
     container_name: fastapi
     restart: unless-stopped
     ports:
-      - "8001:8000"
+      - "8001:80"
     environment:
       PORT: 8000
