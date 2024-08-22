@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException, Request
 from clickhouse_driver import Client
 from fastapi.responses import JSONResponse
 
-client = Client(clickhouse,
+client = Client('clickhouse',
                 user='default',
                 password='',
                 database='arnavi') # подключение к ClickHouse
