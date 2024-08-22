@@ -21,7 +21,7 @@ async def handler(request: Request):
             data_to_insert.append(list(i.values()))
         
         # print(data_to_insert)
-        cnt = client.execute(f"INSERT INTO flespi_data (*) VALUES", data_to_insert)
+        cnt = client.execute(f"INSERT INTO flespi_data (*) VALUES", data_to_insert, types_check=True)
 
         return {"data_to_insert":"OK"}
     except Exception as e:
