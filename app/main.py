@@ -8,7 +8,6 @@ client = Client("clickhouse",
                 database="arnavi") # подключение к ClickHouse
 
 columns = [
-    "name",
     "ain.4",
     "battery.voltage",
     "can.abs.failure.indicator.status",
