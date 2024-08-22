@@ -98,8 +98,10 @@ async def handler(request: Request):
 
         data_to_insert = []
         for i in json_data:
+            msg_array = []
+            cols_in_i = list(i.keys())
             for col in columns:
-                if col in list(i.keys()):
+                if col in cols_in_i:
                     msg_array.append(i.get(col))
                 else:
                     msg_array.append(None)
