@@ -1,15 +1,7 @@
-from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
+from fastapi import FastAPI
 
 app = FastAPI()
+@app.get("/")
 
-class Item(BaseModel):
-    data: str
-
-@app.post("/")
-async def insert_data(item: Item):
-    try:
-        print(item.data)
-
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Error inserting item: {e}")
+async def home():
+   return {"data": "Hello World"}
